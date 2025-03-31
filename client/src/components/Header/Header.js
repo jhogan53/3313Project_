@@ -1,19 +1,20 @@
 // File: src/components/Header/Header.js
-// Header component with navigation links and user info (if logged in).
-import React from 'react';
+// This component displays the navigation links and current user info.
+// It uses the shared user context to update the balance automatically.
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import UserContext from '../../UserContext';
 import './Header.css';
 
 function Header() {
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
-  const balance = localStorage.getItem("balance");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     localStorage.removeItem("balance");
+    setUser({ token: "", username: "", balance: "" });
     navigate("/");
   };
 
@@ -23,12 +24,12 @@ function Header() {
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
-          { token ? (
+          {user.token ? (
             <>
               <li><Link to="/profile">Profile</Link></li>
               <li>
                 <span className="user-info">
-                  {username} (Balance: ${balance})
+                  {user.username} (Balance: ${user.balance})
                 </span>
               </li>
               <li><button onClick={handleLogout} className="logout-btn">Logout</button></li>

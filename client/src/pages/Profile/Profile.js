@@ -1,41 +1,50 @@
 // File: src/pages/Profile/Profile.js
-// Profile page: Displays current username, balance, and provides deposit/withdraw functionality.
-import React, { useState, useEffect } from 'react';
+// This file implements the Profile page which shows the user’s details
+// and provides forms for depositing and withdrawing funds.
+// Success messages are now shown inline and the updated balance is reflected immediately.
+import React, { useState, useEffect, useContext } from 'react';
+import UserContext from '../../UserContext';
 import './Profile.css';
 
 function Profile() {
-  const [profile, setProfile] = useState({ username: '', balance: '' });
+  const { user, setUser } = useContext(UserContext);
+  const [profile, setProfile] = useState({ username: user.username, balance: user.balance });
   const [depositAmount, setDepositAmount] = useState('');
   const [withdrawAmount, setWithdrawAmount] = useState('');
+  const [msg, setMsg] = useState({ text: '', type: '' });
 
-  const token = localStorage.getItem("token");
+  const token = user.token;
 
   useEffect(() => {
-    // Fetch profile info from backend.
+    // Fetch profile info from the backend.
     const fetchProfile = async () => {
       try {
         const response = await fetch('/profile', {
           method: 'GET',
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
+          headers: { "Authorization": `Bearer ${token}` }
         });
         const data = await response.json();
         if (response.ok) {
           setProfile({ username: data.username, balance: data.balance });
+          // Update both the context and localStorage.
+          setUser({ token, username: data.username, balance: data.balance });
           localStorage.setItem("balance", data.balance);
         } else {
-          alert(`Error: ${data.error}`);
+          setMsg({ text: `Error: ${data.error}`, type: 'error' });
         }
       } catch (err) {
-        alert("Network error");
+        setMsg({ text: "Network error", type: 'error' });
       }
     };
-    fetchProfile();
-  }, [token]);
+
+    if (token) {
+      fetchProfile();
+    }
+  }, [token, setUser]);
 
   const handleDeposit = async (e) => {
     e.preventDefault();
+    setMsg({ text: '', type: '' });
     try {
       const response = await fetch('/deposit', {
         method: 'POST',
@@ -47,23 +56,30 @@ function Profile() {
       });
       const data = await response.json();
       if (response.ok) {
-        alert(data.message);
+        setMsg({ text: data.message, type: 'success' });
         // Refresh profile info.
-        const res = await fetch('/profile', { method: 'GET', headers: {"Authorization": `Bearer ${token}`} });
+        const res = await fetch('/profile', {
+          method: 'GET',
+          headers: { "Authorization": `Bearer ${token}` }
+        });
         const profileData = await res.json();
-        setProfile({ username: profileData.username, balance: profileData.balance });
-        localStorage.setItem("balance", profileData.balance);
+        if (res.ok) {
+          setProfile({ username: profileData.username, balance: profileData.balance });
+          setUser({ token, username: profileData.username, balance: profileData.balance });
+          localStorage.setItem("balance", profileData.balance);
+        }
         setDepositAmount('');
       } else {
-        alert(`Error: ${data.error}`);
+        setMsg({ text: `Error: ${data.error}`, type: 'error' });
       }
     } catch (err) {
-      alert("Network error");
+      setMsg({ text: "Network error", type: 'error' });
     }
   };
 
   const handleWithdraw = async (e) => {
     e.preventDefault();
+    setMsg({ text: '', type: '' });
     try {
       const response = await fetch('/withdraw', {
         method: 'POST',
@@ -75,24 +91,35 @@ function Profile() {
       });
       const data = await response.json();
       if (response.ok) {
-        alert(data.message);
+        setMsg({ text: data.message, type: 'success' });
         // Refresh profile info.
-        const res = await fetch('/profile', { method: 'GET', headers: {"Authorization": `Bearer ${token}`} });
+        const res = await fetch('/profile', {
+          method: 'GET',
+          headers: { "Authorization": `Bearer ${token}` }
+        });
         const profileData = await res.json();
-        setProfile({ username: profileData.username, balance: profileData.balance });
-        localStorage.setItem("balance", profileData.balance);
+        if (res.ok) {
+          setProfile({ username: profileData.username, balance: profileData.balance });
+          setUser({ token, username: profileData.username, balance: profileData.balance });
+          localStorage.setItem("balance", profileData.balance);
+        }
         setWithdrawAmount('');
       } else {
-        alert(`Error: ${data.error}`);
+        setMsg({ text: `Error: ${data.error}`, type: 'error' });
       }
     } catch (err) {
-      alert("Network error");
+      setMsg({ text: "Network error", type: 'error' });
     }
   };
 
   return (
     <div className="profile">
       <h2>Profile</h2>
+      {msg.text && (
+        <div className={`msg ${msg.type}`}>
+          {msg.text}
+        </div>
+      )}
       <p><strong>Username:</strong> {profile.username}</p>
       <p><strong>Balance:</strong> ${profile.balance}</p>
       <div className="transactions">
