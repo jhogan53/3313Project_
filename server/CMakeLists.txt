@@ -15,6 +15,9 @@ execute_process(
 include_directories(${BREW_PREFIX}/include)
 link_directories(${BREW_PREFIX}/lib)
 
+# Include jwt-cpp headers (from server/external/jwt-cpp)
+include_directories(${CMAKE_SOURCE_DIR}/external/jwt-cpp/include)
+
 # Find Boost (we need Boost.System for Asio)
 find_package(Boost 1.87.0 REQUIRED COMPONENTS system)
 include_directories(${Boost_INCLUDE_DIRS})

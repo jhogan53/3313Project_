@@ -19,6 +19,10 @@ function Login() {
       if (!response.ok) {
         alert(`Error: ${data.error}`);
       } else {
+        // Save token, username, and balance in localStorage
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("balance", data.balance);
         alert(`Success: ${data.message}`);
       }
     } catch (err) {

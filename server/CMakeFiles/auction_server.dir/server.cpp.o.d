@@ -2017,6 +2017,54 @@ CMakeFiles/auction_server.dir/server.cpp.o: \
   /opt/homebrew/include/boost/asio/write_at.hpp \
   /opt/homebrew/include/boost/asio/impl/write_at.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/iostream \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/random \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/bernoulli_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/uniform_real_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/generate_canonical.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/binomial_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/cauchy_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/chi_squared_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/gamma_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/exponential_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/clamp_to_integral.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/default_random_engine.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/linear_congruential_engine.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/is_seed_sequence.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/discard_block_engine.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/discrete_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/numeric \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/accumulate.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/adjacent_difference.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/exclusive_scan.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/gcd_lcm.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/inclusive_scan.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/inner_product.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/iota.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/midpoint.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/partial_sum.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/reduce.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/transform_exclusive_scan.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/transform_inclusive_scan.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/transform_reduce.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/extreme_value_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/fisher_f_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/geometric_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/negative_binomial_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/poisson_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/normal_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/independent_bits_engine.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/knuth_b.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/shuffle_order_engine.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/lognormal_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/mersenne_twister_engine.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/piecewise_constant_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/piecewise_linear_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/random_device.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/ranlux.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/subtract_with_carry_engine.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/seed_seq.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/student_t_distribution.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__random/weibull_distribution.h \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/pqxx \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/internal/header-pre.hxx \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/config-public-compiler.h \
@@ -2069,20 +2117,6 @@ CMakeFiles/auction_server.dir/server.cpp.o: \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/internal/libpq-forward.hxx \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/zview.hxx \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/internal/conversions.hxx \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/numeric \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/accumulate.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/adjacent_difference.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/exclusive_scan.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/gcd_lcm.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/inclusive_scan.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/inner_product.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/iota.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/midpoint.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/partial_sum.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/reduce.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/transform_exclusive_scan.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/transform_inclusive_scan.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__numeric/transform_reduce.h \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/params.hxx \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/internal/statement_parameters.hxx \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/binarystring.hxx \
@@ -2138,51 +2172,70 @@ CMakeFiles/auction_server.dir/server.cpp.o: \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/time.hxx \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/transactor.hxx \
   /opt/homebrew/Cellar/libpqxx/7.10.0/include/pqxx/internal/header-post.hxx \
-  /opt/homebrew/include/nlohmann/json.hpp \
-  /opt/homebrew/include/nlohmann/adl_serializer.hpp \
-  /opt/homebrew/include/nlohmann/detail/abi_macros.hpp \
-  /opt/homebrew/include/nlohmann/detail/conversions/from_json.hpp \
+  /Users/jackhogan/Desktop/3313project/server/external/jwt-cpp/include/nlohmann/json.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/forward_list \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/valarray \
-  /opt/homebrew/include/nlohmann/detail/exceptions.hpp \
-  /opt/homebrew/include/nlohmann/detail/value_t.hpp \
-  /opt/homebrew/include/nlohmann/detail/macro_scope.hpp \
-  /opt/homebrew/include/nlohmann/detail/meta/detected.hpp \
-  /opt/homebrew/include/nlohmann/detail/meta/void_t.hpp \
-  /opt/homebrew/include/nlohmann/thirdparty/hedley/hedley.hpp \
-  /opt/homebrew/include/nlohmann/detail/string_escape.hpp \
-  /opt/homebrew/include/nlohmann/detail/input/position_t.hpp \
-  /opt/homebrew/include/nlohmann/detail/meta/cpp_future.hpp \
-  /opt/homebrew/include/nlohmann/detail/meta/type_traits.hpp \
-  /opt/homebrew/include/nlohmann/detail/iterators/iterator_traits.hpp \
-  /opt/homebrew/include/nlohmann/detail/meta/call_std/begin.hpp \
-  /opt/homebrew/include/nlohmann/detail/meta/call_std/end.hpp \
-  /opt/homebrew/include/nlohmann/json_fwd.hpp \
-  /opt/homebrew/include/nlohmann/detail/string_concat.hpp \
-  /opt/homebrew/include/nlohmann/detail/meta/identity_tag.hpp \
-  /opt/homebrew/include/nlohmann/detail/meta/std_fs.hpp \
-  /opt/homebrew/include/nlohmann/detail/conversions/to_json.hpp \
-  /opt/homebrew/include/nlohmann/detail/iterators/iteration_proxy.hpp \
-  /opt/homebrew/include/nlohmann/byte_container_with_subtype.hpp \
-  /opt/homebrew/include/nlohmann/detail/hash.hpp \
-  /opt/homebrew/include/nlohmann/detail/input/binary_reader.hpp \
-  /opt/homebrew/include/nlohmann/detail/input/input_adapters.hpp \
-  /opt/homebrew/include/nlohmann/detail/input/json_sax.hpp \
-  /opt/homebrew/include/nlohmann/detail/input/lexer.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/clocale \
-  /opt/homebrew/include/nlohmann/detail/meta/is_sax.hpp \
-  /opt/homebrew/include/nlohmann/detail/input/parser.hpp \
-  /opt/homebrew/include/nlohmann/detail/iterators/internal_iterator.hpp \
-  /opt/homebrew/include/nlohmann/detail/iterators/primitive_iterator.hpp \
-  /opt/homebrew/include/nlohmann/detail/iterators/iter_impl.hpp \
-  /opt/homebrew/include/nlohmann/detail/iterators/json_reverse_iterator.hpp \
-  /opt/homebrew/include/nlohmann/detail/json_custom_base_class.hpp \
-  /opt/homebrew/include/nlohmann/detail/json_pointer.hpp \
-  /opt/homebrew/include/nlohmann/detail/json_ref.hpp \
-  /opt/homebrew/include/nlohmann/detail/output/binary_writer.hpp \
-  /opt/homebrew/include/nlohmann/detail/output/output_adapters.hpp \
-  /opt/homebrew/include/nlohmann/detail/output/serializer.hpp \
-  /opt/homebrew/include/nlohmann/detail/conversions/to_chars.hpp \
-  /opt/homebrew/include/nlohmann/ordered_map.hpp \
-  /opt/homebrew/include/nlohmann/detail/macro_unscope.hpp \
-  /opt/homebrew/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+  /Users/jackhogan/Desktop/3313project/server/external/jwt-cpp/include/jwt-cpp/jwt.h \
+  /Users/jackhogan/Desktop/3313project/server/external/jwt-cpp/include/picojson/picojson.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cinttypes \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/inttypes.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include/inttypes.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/inttypes.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/xlocale/_inttypes.h \
+  /Users/jackhogan/Desktop/3313project/server/external/jwt-cpp/include/jwt-cpp/base.h \
+  /opt/homebrew/include/openssl/ec.h \
+  /opt/homebrew/include/openssl/macros.h \
+  /opt/homebrew/include/openssl/opensslconf.h \
+  /opt/homebrew/include/openssl/configuration.h \
+  /opt/homebrew/include/openssl/opensslv.h \
+  /opt/homebrew/include/openssl/types.h \
+  /opt/homebrew/include/openssl/e_os2.h \
+  /opt/homebrew/include/openssl/safestack.h \
+  /opt/homebrew/include/openssl/stack.h \
+  /opt/homebrew/include/openssl/asn1.h \
+  /opt/homebrew/include/openssl/bio.h \
+  /opt/homebrew/include/openssl/crypto.h \
+  /opt/homebrew/include/openssl/cryptoerr.h \
+  /opt/homebrew/include/openssl/symhacks.h \
+  /opt/homebrew/include/openssl/cryptoerr_legacy.h \
+  /opt/homebrew/include/openssl/core.h \
+  /opt/homebrew/include/openssl/bioerr.h \
+  /opt/homebrew/include/openssl/asn1err.h \
+  /opt/homebrew/include/openssl/bn.h \
+  /opt/homebrew/include/openssl/bnerr.h \
+  /opt/homebrew/include/openssl/ecerr.h \
+  /opt/homebrew/include/openssl/params.h \
+  /opt/homebrew/include/openssl/err.h \
+  /opt/homebrew/include/openssl/lhash.h \
+  /opt/homebrew/include/openssl/evp.h \
+  /opt/homebrew/include/openssl/core_dispatch.h \
+  /opt/homebrew/include/openssl/indicator.h \
+  /opt/homebrew/include/openssl/evperr.h \
+  /opt/homebrew/include/openssl/objects.h \
+  /opt/homebrew/include/openssl/obj_mac.h \
+  /opt/homebrew/include/openssl/objectserr.h \
+  /opt/homebrew/include/openssl/hmac.h \
+  /opt/homebrew/include/openssl/pem.h \
+  /opt/homebrew/include/openssl/x509.h \
+  /opt/homebrew/include/openssl/buffer.h \
+  /opt/homebrew/include/openssl/buffererr.h \
+  /opt/homebrew/include/openssl/rsa.h \
+  /opt/homebrew/include/openssl/rsaerr.h \
+  /opt/homebrew/include/openssl/dsa.h /opt/homebrew/include/openssl/dh.h \
+  /opt/homebrew/include/openssl/dherr.h \
+  /opt/homebrew/include/openssl/dsaerr.h \
+  /opt/homebrew/include/openssl/sha.h \
+  /opt/homebrew/include/openssl/x509err.h \
+  /opt/homebrew/include/openssl/x509_vfy.h \
+  /opt/homebrew/include/openssl/pkcs7.h \
+  /opt/homebrew/include/openssl/pkcs7err.h \
+  /opt/homebrew/include/openssl/http.h \
+  /opt/homebrew/include/openssl/conf.h \
+  /opt/homebrew/include/openssl/conferr.h \
+  /opt/homebrew/include/openssl/conftypes.h \
+  /opt/homebrew/include/openssl/pemerr.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/codecvt \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/set \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/experimental/type_traits \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/experimental/__config
