@@ -24,7 +24,7 @@ namespace net = boost::asio;    // from <boost/asio.hpp>
 using tcp = net::ip::tcp;       // from <boost/asio/ip/tcp.hpp>
 
 // Connection string to your YugabyteDB.
-// Make sure the certs folder (with root.crt) is in your server folder.
+// Ensure the certs folder (with root.crt) is in your server folder.
 std::string db_connection_str =
     "postgresql://admin:hmUFdhyZfSQb_aOwiv8KwXXr7XpUtn@"
     "ca-central-1.0043d35e-0abb-460d-8940-1948fd1bba9e.aws.yugabyte.cloud:5433/"
@@ -64,7 +64,8 @@ http::response<http::string_body> handle_register(
             return make_response(req, 500, "Database connection failed");
 
         pqxx::work W(C);
-        auto result = W.exec("SELECT id FROM users WHERE username = $1", pqxx::params(username));
+        // Query uses lowercase table name "users"
+        auto result = W.exec("SELECT user_id FROM users WHERE username = $1", pqxx::params(username));
         if (!result.empty())
             return make_response(req, 400, "Username already exists");
 
@@ -127,7 +128,7 @@ http::response<http::string_body> handle_login(
     }
 }
 
-// Session handler: Reads a request, routes it, and writes a response.
+// Session handler: Reads a request, routes it, writes a response.
 template <class Stream>
 void do_session(Stream &stream)
 {
@@ -168,7 +169,7 @@ void do_session(Stream &stream)
     sock.close();
 }
 
-// Main server: Listens on port 9002 and spawns a session for each connection.
+// Main server: Listens on port 9002 and spawns a session per connection.
 int main()
 {
     try
