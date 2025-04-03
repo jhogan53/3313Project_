@@ -1,0 +1,54 @@
+.live-auctions {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .live-auctions h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .auction-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  
+  .auction-card h3 {
+    margin: 0 0 10px 0;
+  }
+  
+  .auction-card p {
+    margin: 5px 0;
+  }
+  
+  .auction-image img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .msg {
+    margin-bottom: 15px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .msg.success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .msg.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+  }
+  

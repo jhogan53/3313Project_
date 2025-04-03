@@ -1,0 +1,50 @@
+/* File: src/components/Header/Header.css */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header nav li {
+  margin: 0 15px;
+}
+
+.header nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.header nav a:hover {
+  text-decoration: underline;
+}
+
+.user-info {
+  font-size: 14px;
+}
+
+.logout-btn {
+  background-color: #555;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #777;
+}

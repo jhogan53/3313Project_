@@ -1,0 +1,3 @@
+/Users/jackhogan/Desktop/3313Project/server/CMakeFiles/auction_server.dir
+/Users/jackhogan/Desktop/3313Project/server/CMakeFiles/edit_cache.dir
+/Users/jackhogan/Desktop/3313Project/server/CMakeFiles/rebuild_cache.dir
