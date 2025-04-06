@@ -17,33 +17,19 @@ function MyListings() {
   const [editingId, setEditingId] = useState(null);
   const [newDescription, setNewDescription] = useState('');
   const [auctionResults, setAuctionResults] = useState({}); // keyed by auction_id
-  const [tick, setTick] = useState(0); // to trigger timer updates
-  const [timeOffset, setTimeOffset] = useState(0); // serverTime - localTime (ms)
+  const [tick, setTick] = useState(0);
   const navigate = useNavigate();
 
-  // On mount, fetch server time to compute offset.
-  useEffect(() => {
-    const fetchServerTime = async () => {
-      try {
-        const response = await fetch('/current_time', { method: 'GET' });
-        const data = await response.json();
-        if (response.ok) {
-          const serverTime = new Date(data.current_time).getTime();
-          const localTime = Date.now();
-          setTimeOffset(serverTime - localTime);
-        }
-      } catch (err) {
-        console.error("Error fetching server time", err);
-      }
-    };
-    fetchServerTime();
-  }, []);
-
-  // Update tick every second so timers re-render.
+  // Update tick every second to force re-render and update timers.
   useEffect(() => {
     const interval = setInterval(() => setTick(t => t + 1), 1000);
     return () => clearInterval(interval);
   }, []);
+
+  // Helper: parse a timestamp string as UTC.
+  const parsePostedTime = (timeStr) => {
+    return timeStr.endsWith("Z") ? new Date(timeStr) : new Date(timeStr + "Z");
+  };
 
   // Fetch listings posted by the user.
   const fetchListings = async () => {
@@ -64,8 +50,10 @@ function MyListings() {
   };
 
   useEffect(() => {
-    fetchListings();
-  }, [user.token]);
+    if (user.token) {
+      fetchListings();
+    }
+  }, [user.token, tick]);
 
   // Fetch auction result (highest bid and bidder) for a given auction.
   const fetchAuctionResult = async (auctionId) => {
@@ -85,6 +73,37 @@ function MyListings() {
     }
   };
 
+  // When listings change, fetch auction results for each listing.
+  useEffect(() => {
+    listings.forEach(listing => {
+      if (!auctionResults[listing.auction_id]) {
+        fetchAuctionResult(listing.auction_id);
+      }
+    });
+  }, [listings, user.token]);
+
+  // Timer calculation:
+  // For listings that are not live (start_delay > 0), effective start time = posted_time + start_delay.
+  // For live listings (start_delay === 0), use the posted_time as the time the listing went live.
+  const getEffectiveTimes = (listing) => {
+    const posted = parsePostedTime(listing.posted_time).getTime();
+    const sDelay = Number(listing.start_delay);
+    const lDuration = Number(listing.live_duration);
+    const effectiveStart = sDelay > 0 ? posted + sDelay * 60000 : posted;
+    const effectiveEnd = effectiveStart + lDuration * 60000;
+    return { effectiveStart, effectiveEnd };
+  };
+
+  // Helper to format milliseconds into HH:MM:SS.
+  const formatTime = (ms) => {
+    if (ms <= 0) return '00:00:00';
+    const totalSeconds = Math.floor(ms / 1000);
+    const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+    const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+    const seconds = String(totalSeconds % 60).padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+  };
+
   // Post a new listing.
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -95,8 +114,8 @@ function MyListings() {
         description: description,
         image_url: imageUrl,
         base_price: parseFloat(basePrice),
-        start_delay: parseInt(startDelay),
-        live_duration: parseInt(liveDuration)
+        start_delay: parseInt(startDelay, 10),
+        live_duration: parseInt(liveDuration, 10)
       };
 
       const response = await fetch('/create_listing', {
@@ -112,7 +131,6 @@ function MyListings() {
         setMsg({ text: `Error: ${data.error}`, type: 'error' });
       } else {
         setMsg({ text: data.message, type: 'success' });
-        // Clear form fields.
         setItemName('');
         setDescription('');
         setImageUrl('');
@@ -155,10 +173,33 @@ function MyListings() {
     }
   };
 
-  // Make listing live immediately (set start_delay to 0).
+  // Make listing live immediately.
   const handleMakeLive = async (auctionId) => {
     try {
       const response = await fetch('/make_live', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
+        },
+        body: JSON.stringify({ auction_id: auctionId })
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setMsg({ text: `Error: ${data.error}`, type: 'error' });
+      } else {
+        setMsg({ text: data.message, type: 'success' });
+        fetchListings();
+      }
+    } catch (err) {
+      setMsg({ text: 'Network error', type: 'error' });
+    }
+  };
+
+  // End a live auction immediately.
+  const handleEndAuction = async (auctionId) => {
+    try {
+      const response = await fetch('/end_auction', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -199,16 +240,6 @@ function MyListings() {
     } catch (err) {
       setMsg({ text: 'Network error', type: 'error' });
     }
-  };
-
-  // Helper to format a countdown timer.
-  const formatTime = (ms) => {
-    if (ms <= 0) return '00:00:00';
-    const totalSeconds = Math.floor(ms / 1000);
-    const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
-    const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
-    const seconds = String(totalSeconds % 60).padStart(2, '0');
-    return `${hours}:${minutes}:${seconds}`;
   };
 
   return (
@@ -252,22 +283,68 @@ function MyListings() {
           <p>No listings found.</p>
         ) : (
           listings.map(listing => {
-            const postedTime = new Date(listing.posted_time);
-            const effectiveStart = new Date(postedTime.getTime() + listing.start_delay * 60000);
-            const effectiveEnd = new Date(effectiveStart.getTime() + listing.live_duration * 60000);
-            // Use the timeOffset to adjust local time to server time.
-            const now = new Date(Date.now() + timeOffset);
+            const postedTime = parsePostedTime(listing.posted_time);
+            // Compute effective start and end times.
+            // If start_delay is 0, we trust the backend-updated posted_time as the live start time.
+            const sDelay = Number(listing.start_delay);
+            const lDuration = Number(listing.live_duration);
+            const effectiveStart = sDelay > 0 
+              ? postedTime.getTime() + sDelay * 60000 
+              : postedTime.getTime();
+            const effectiveEnd = effectiveStart + lDuration * 60000;
+            const now = Date.now();
             let statusLabel = '';
+            let actionButtons = null;
+            let currentBidDisplay = null;
+
             if (now < effectiveStart) {
               statusLabel = `Starts in: ${formatTime(effectiveStart - now)}`;
+              actionButtons = (
+                <>
+                  <button onClick={() => handleEditDescription(listing.auction_id, listing.description)}>
+                    Edit Description
+                  </button>
+                  <button onClick={() => handleMakeLive(listing.auction_id)}>
+                    Make Live Now
+                  </button>
+                </>
+              );
             } else if (now >= effectiveStart && now < effectiveEnd) {
               statusLabel = `Live - Ends in: ${formatTime(effectiveEnd - now)}`;
+              const highestBidDisplay =
+                Number(listing.highest_bid) > 0
+                  ? `Current Highest Bid: $${listing.highest_bid} by ${listing.highest_bidder}`
+                  : "No bids yet";
+              currentBidDisplay = (
+                <div className="auction-result">
+                  <p>{highestBidDisplay}</p>
+                </div>
+              );
+              actionButtons = (
+                <>
+                  {currentBidDisplay}
+                  <button onClick={() => handleEditDescription(listing.auction_id, listing.description)}>
+                    Edit Description
+                  </button>
+                  <button onClick={() => handleEndAuction(listing.auction_id)}>
+                    End Auction Now
+                  </button>
+                </>
+              );
             } else {
               statusLabel = `Auction Ended`;
-              if (!auctionResults[listing.auction_id]) {
-                fetchAuctionResult(listing.auction_id);
-              }
+              const finalResult =
+                Number(listing.highest_bid) > 0
+                  ? `Highest Bid: $${listing.highest_bid} by ${listing.highest_bidder}`
+                  : "No bids placed";
+              actionButtons = (
+                <>
+                  <p><strong>Result:</strong></p>
+                  <p>{finalResult}</p>
+                </>
+              );
             }
+
             return (
               <div key={listing.auction_id} className="listing-card">
                 <h4>{listing.item_name}</h4>
@@ -283,45 +360,8 @@ function MyListings() {
                 <p><strong>Live Duration:</strong> {listing.live_duration} minutes</p>
                 <p><strong>Status:</strong> {statusLabel}</p>
                 <div className="listing-actions">
-                  {now < effectiveEnd ? (
-                    <>
-                      {now < effectiveStart ? (
-                        <>
-                          <button onClick={() => handleEditDescription(listing.auction_id, listing.description)}>
-                            Edit Description
-                          </button>
-                          <button onClick={() => handleMakeLive(listing.auction_id)}>
-                            Make Live Now
-                          </button>
-                          <button onClick={() => handleDelete(listing.auction_id)}>Delete Listing</button>
-                        </>
-                      ) : (
-                        <>
-                          <button onClick={() => handleEditDescription(listing.auction_id, listing.description)}>
-                            Edit Description
-                          </button>
-                          <button onClick={() => handleDelete(listing.auction_id)}>Delete Listing</button>
-                        </>
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      <p><strong>Result:</strong></p>
-                      {auctionResults[listing.auction_id] ? (
-                        auctionResults[listing.auction_id].error ? (
-                          <p>Error: {auctionResults[listing.auction_id].error}</p>
-                        ) : auctionResults[listing.auction_id].bid_amount ? (
-                          <p>
-                            Highest Bid: ${auctionResults[listing.auction_id].bid_amount} by {auctionResults[listing.auction_id].bidder_username}
-                          </p>
-                        ) : (
-                          <p>No bids placed</p>
-                        )
-                      ) : (
-                        <p>Loading result...</p>
-                      )}
-                    </>
-                  )}
+                  {actionButtons}
+                  <button onClick={() => handleDelete(listing.auction_id)}>Delete Listing</button>
                 </div>
               </div>
             );
