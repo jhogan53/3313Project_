@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+// File: src/pages/Header/Header.js
+import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../../UserContext';
 import './Header.css';
@@ -6,6 +7,33 @@ import './Header.css';
 function Header() {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
+
+  // Poll profile every 10 seconds to refresh the balance
+  useEffect(() => {
+    const fetchProfile = async () => {
+      if (!user.token) return;
+      try {
+        const response = await fetch('/profile', {
+          method: 'GET',
+          headers: {
+            "Authorization": `Bearer ${user.token}`
+          }
+        });
+        if (response.ok) {
+          const data = await response.json();
+          // Update the context and localStorage with the new balance
+          setUser(prev => ({ ...prev, balance: data.balance }));
+          localStorage.setItem("balance", data.balance);
+        }
+      } catch (err) {
+        console.error("Failed to refresh profile", err);
+      }
+    };
+
+    const intervalId = setInterval(fetchProfile, 10000); // Poll every 10 seconds
+
+    return () => clearInterval(intervalId);
+  }, [user.token, setUser]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
